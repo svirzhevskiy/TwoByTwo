@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>2048</title>
+    <base href="/" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="TwoByTwo.styles.css" rel="stylesheet" />
+</head>
+
+<style>
+    body{
+        background: #E8F1F8;
+    }
+    .center-logo{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .loading{
+        height: 7.5rem;
+        animation: loadingAnimation 1.7s linear 0s infinite normal;
+    }
+    @keyframes loadingAnimation {
+        0% { transform: rotate(0); }
+        50% { transform: rotate(180deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div class="center-logo">
+            <img src="loading.png" alt="loading..." class="loading"/>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+</body>
+
+</html>
