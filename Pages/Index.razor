@@ -1,0 +1,166 @@
+﻿@page "/"
+@using TwoByTwo.Application.Matrix
+@inject ILocalStorageService _localStorage
+
+<div class="score-bar">
+    <div>current score <span>@_currentScore</span></div>
+</div>
+<div class="touch-zone"
+     @ontouchstart="HandleSwipeStart"
+     @ontouchend="HandleSwipeEnd"
+     @onmousedown="HandleSwipeStart"
+     @onmouseup="HandleSwipeEnd">
+    <div class="field">
+        @for (var row = 0; row < _gameFieldSize; row++)
+        {
+            <div class="row">
+                @for (var col = 0; col < _gameFieldSize; col++)
+                {
+                    <Cell MatrixCell="@_gameMatrix.Cells[row][col]"/>
+                }
+            </div>
+        }
+    </div>
+    <div class="lose @(_gameEnded ? " display" : "")"
+         @onclick="RestartGame">
+        <div>You lose</div>
+        <div>@_currentScore</div>
+    </div>
+</div>
+<div class="buttons-bar">
+    <button @onclick="RestartGame">
+        <img src="restart.png" alt="icon"/>
+        <span>restart</span>
+    </button>
+    <button @onclick="() => {_showSettings = true;}" 
+            class="@(_showSettings ? " display-none" : "")">
+        <img src="settings.png" alt="icon"/>
+        <span>settings</span>
+    </button>
+    <div class="settings-buttons @(_showSettings ? " display" : "")">
+        <button @onclick="() => ChangeGameSize(4)">4</button>
+        <button @onclick="() => ChangeGameSize(5)">5</button>
+        <button @onclick="() => ChangeGameSize(6)">6</button>
+    </div>
+    <br/>
+</div>
+<div class="max-score">max score @_maxScore</div>
+
+@code
+{
+    private int _gameFieldSize = 4;
+    private GameMatrix _gameMatrix = new (4);
+    private int _currentScore;
+    private int _maxScore;
+    private bool _gameEnded;
+    private bool _showSettings;
+
+    private void ChangeGameSize(int size)
+    {
+        if (_gameFieldSize == size)
+        {
+            _showSettings = false;
+            return;
+        }
+        
+        _gameFieldSize = size;
+        _showSettings = false;
+        
+        RestartGame();
+    }
+    
+    private (double, double) _startSwipePoint;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var matrixCells = await _localStorage.GetItemAsync<int[][]>("gameMatrix");
+        var maxScore = await _localStorage.GetItemAsync<int>("maxScore");
+        
+        if (maxScore > 0)
+        {
+            _gameMatrix = new GameMatrix(matrixCells);
+            _gameFieldSize = _gameMatrix.Cells.Length;
+            _currentScore = _gameMatrix.GetScore();
+            _maxScore = maxScore;
+        }
+    }
+
+    private void HandleSwipeStart(MouseEventArgs e)
+    {
+        _startSwipePoint = (e.ClientX, e.ClientY);
+    }
+    private void HandleSwipeStart(TouchEventArgs e)
+    {
+        _startSwipePoint = (e.Touches[0].ClientX, e.Touches[0].ClientY);
+    }
+    
+    private void HandleSwipeEnd(TouchEventArgs e)
+    {
+        MakeGameTurn(e.ChangedTouches[0].ClientX, e.ChangedTouches[0].ClientY);
+    }
+    private void HandleSwipeEnd(MouseEventArgs e)
+    {
+        MakeGameTurn(e.ClientX, e.ClientY);
+    }
+
+    private async void MakeGameTurn(double x, double y)
+    {
+        if (Math.Abs(_startSwipePoint.Item2 - y) + Math.Abs(_startSwipePoint.Item1 - x) < 60)
+            return;
+        
+        const double threePiOnFour = 2.35619;
+        const double piOnFour = 0.78539;
+        
+        var deg = Math.Atan2(y - _startSwipePoint.Item2, x - _startSwipePoint.Item1);
+    
+        var matrixChanged = deg switch
+        {
+            >= -threePiOnFour and <= -piOnFour => _gameMatrix.ToTop(),
+            > -piOnFour and < piOnFour => _gameMatrix.ToRight(),
+            >= piOnFour and < threePiOnFour => _gameMatrix.ToBottom(),
+            _ => _gameMatrix.ToLeft()
+            };
+
+        if(!_gameMatrix.HasEmptyCell())
+        {
+            if(_gameMatrix.HasTurns())
+            {
+                return;
+            }
+            
+            _gameEnded = true;
+        }
+
+        if (!matrixChanged) 
+            return;
+        
+        _gameMatrix.GenerateNewValues();
+        _currentScore = _gameMatrix.GetScore();
+            
+        if (_currentScore > _maxScore)
+        {
+            _maxScore = _currentScore;
+        }
+
+        var cells = new int[_gameFieldSize][];
+        for (var row = 0; row < _gameFieldSize; row++)
+        {
+            cells[row] = new int[_gameFieldSize];
+            for (var col = 0; col < _gameFieldSize; col++)
+            {
+                cells[row][col] = _gameMatrix.Cells[row][col].Value;
+            }
+        }
+        
+        await _localStorage.SetItemAsync("gameMatrix", cells);
+        await _localStorage.SetItemAsync("maxScore", _maxScore);
+    }
+
+    private void RestartGame()
+    {
+        _gameEnded = false;
+        _currentScore = 0;
+
+        _gameMatrix = new GameMatrix(_gameFieldSize);
+    }
+}

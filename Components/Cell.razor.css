@@ -1,0 +1,124 @@
+﻿.cell{
+    position: relative;
+    display: inline-block;
+    height: var(--cell-size);
+    width: var(--cell-size);
+    margin: 0.2rem 0.35rem;
+    color: black;
+    background-color: var(--background-color);
+    border-radius: 10px;
+}
+
+.increment-anim {
+    animation: popCell 0.34s linear;
+}
+
+@keyframes popCell {
+     0% {
+         transform: scale(1);
+     }
+    30%{
+        transform: scale(1.1);
+    }
+     100% {
+         transform: scale(1);
+     }
+ }
+
+.init-anim{
+    animation: initCell 0.24s linear;
+}
+
+@keyframes initCell {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.number{
+    position: absolute;
+    font-size: 2em;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: bold;
+}
+
+.color-0{
+    color: transparent;
+    background: var(--background-color);
+    box-shadow: inset -7px -4px 6px #F2F9FF, inset 3px 4px 13px #C6D6E6;
+}
+
+.color-2{
+    color: #789FC6;;
+    background: linear-gradient(314.88deg, #E4EEF8 2.29%, #AED3F8 99.75%, #D2E4F7 100%);
+}
+
+.color-4{
+    color: #006180;
+    background: linear-gradient(314.88deg, #B2E3FF 2.29%, #308FE7 100%);
+}
+
+.color-8{
+    color: #006180;
+    background: linear-gradient(314.88deg, #CDEDFF 2.29%, #009BCC 100%);
+}
+
+.color-16{
+    color: #297072;
+    background: linear-gradient(314.88deg, #A8F6F8 2.29%, #52C6C9 100%);
+}
+
+.color-32{
+    color: #297072;
+    background: linear-gradient(314.88deg, #CBF4BD 2.29%, #48C78A 100%);
+}
+
+.color-64{
+    color: #EBB619;
+    background: linear-gradient(314.88deg, #F8F1DD 2.29%, #EFD589 100%);
+}
+
+.color-128{
+    color: #E6A323;
+    background: linear-gradient(314.88deg, #FFE8BA 2.29%, #FFCB65 100%);
+}
+
+.color-256{
+    color: #FF6B00;
+    background: linear-gradient(314.88deg, #FFDBB2 2.29%, #FFA439 100%);
+}
+
+.color-512{
+    color: #9A4A12;
+    background: linear-gradient(314.88deg, #FFC3A9 2.29%, #FF6332 100%);
+}
+
+.color-1024{
+    color: #921111;
+    background: linear-gradient(314.88deg, #FFB6B6 2.29%, #FF1B1B 100%);
+}
+
+.color-2048{
+    color: #921111;
+    background: linear-gradient(314.88deg, #FFBFCA 2.29%, #FF4C8C 100%);
+}
+
+.color-4069{
+    color: #921111;
+    background: linear-gradient(314.88deg, #F8CCFF 2.29%, #FF61F9 100%);
+}
+
+.color-8192{
+    color: #5D26A4;
+    background: linear-gradient(314.88deg, #E3CCFF 2.29%, #A761FF 100%);
+}
+
+.color-16384{
+    color: #2A2E96;
+    background: linear-gradient(314.88deg, #CCD5FF 2.29%, #6167FF 100%);
+}

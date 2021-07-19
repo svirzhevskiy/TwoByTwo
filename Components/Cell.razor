@@ -1,0 +1,10 @@
+﻿@using TwoByTwo.Application.Matrix
+
+<div class="cell color-@MatrixCell.Value @MatrixCell.Animation-anim">
+    <span class="number">@MatrixCell.Value</span>
+</div>
+
+@code {
+    [Parameter]
+    public MatrixCell MatrixCell { get; set; }
+}

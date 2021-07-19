@@ -1,0 +1,115 @@
+﻿.score-bar{
+    height: 5rem;
+    text-align: center;
+    color: #006180;
+    font-size: 1.7rem;
+}
+
+.score-bar > div > span{
+    box-shadow: inset -7px -4px 6px #F2F9FF, inset 3px 4px 13px #C6D6E6;
+    border-radius: 5px;
+    padding: 0.7rem 2.3rem;
+    margin-left: 1rem;
+    display: inline-block;
+    min-width: 3rem;
+}
+
+.buttons-bar{
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.buttons-bar > button{
+    margin: 1rem;
+    min-width: 11rem;
+    user-select: none;
+}
+
+button > img{
+    height: 1.7rem;
+    max-width: 40px;
+}
+
+button > span{
+    margin-left: 1rem;
+}
+
+button{
+    background: #E8F1F8;
+    box-shadow: -7px -4px 6px #f3faff, 3px 4px 13px #c4d2e0;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5rem 1.75rem;
+    color: #006180;
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 3rem;
+    justify-content: center;
+}
+
+button:active{
+    box-shadow: inset -7px -4px 6px #F3FAFF, inset 3px 4px 13px #C4D2E0;
+}
+
+.display-none{
+    display: none;
+}
+
+.settings-buttons{
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.settings-buttons > button {
+    width: 1.2rem;
+    margin: 1rem;
+    font-weight: 600;
+}
+
+.max-score{
+    text-align: center;
+    font-size: 1.4rem;
+    color: #006180;
+    margin: 1rem 0;
+}
+
+.touch-zone{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    min-height: calc(100vh - 20rem);
+    width: 100%;
+}
+
+.field{
+    padding: 1.4rem;
+    min-width: max-content;
+    height: fit-content;
+    user-select: none;
+    background: var(--background-color);
+    box-shadow: -19px -11px 38px #FAFCFF, 12px 12px 85px #C5D6E7;
+    border-radius: 34px;
+}
+
+.lose{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    width: 100%;
+    height: 100%;
+    color: #006180;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(314.88deg, #CDEDFF 2.29%, #009BCC 100%);
+    display: none;
+}
+
+.display{
+    display: flex;
+}
