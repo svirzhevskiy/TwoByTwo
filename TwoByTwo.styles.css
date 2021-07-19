@@ -254,7 +254,8 @@ button:active[b-597604okvn]{
 
     .score-bar[b-597604okvn]{
         font-size: 1rem;
-        padding: 0.4rem 1.3rem;
+        padding: 2rem 1.3rem 1.3rem;
+        height: auto;
     }
 
     .buttons-bar > button[b-597604okvn]{
@@ -274,6 +275,10 @@ button:active[b-597604okvn]{
     .max-score[b-597604okvn]{
         font-size: 1rem;
     }
+    
+    .touch-zone[b-597604okvn]{
+        min-height: calc(100vh - 23rem);
+    }
 }
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-hnmh5rtqas]{
@@ -281,4 +286,10 @@ button:active[b-597604okvn]{
     background: var(--background-color);
     min-height: calc(100vh - 3rem);
     padding-top: 3rem;
+}
+
+@media (max-width: 530px) {
+    .page[b-hnmh5rtqas]{
+        padding-top: 0;
+    }
 }
