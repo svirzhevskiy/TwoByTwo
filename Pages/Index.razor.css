@@ -121,7 +121,8 @@ button:active{
 
     .score-bar{
         font-size: 1rem;
-        padding: 0.4rem 1.3rem;
+        padding: 2rem 1.3rem 1.3rem;
+        height: auto;
     }
 
     .buttons-bar > button{
@@ -140,5 +141,9 @@ button:active{
 
     .max-score{
         font-size: 1rem;
+    }
+    
+    .touch-zone{
+        min-height: calc(100vh - 23rem);
     }
 }
