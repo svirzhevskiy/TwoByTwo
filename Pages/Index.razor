@@ -2,49 +2,53 @@
 @using TwoByTwo.Application.Matrix
 @inject ILocalStorageService _localStorage
 
-<div class="score-bar">
-    <div>current score <span>@_currentScore</span></div>
-</div>
-<div class="touch-zone"
-     @ontouchstart="HandleSwipeStart"
-     @ontouchend="HandleSwipeEnd"
-     @onmousedown="HandleSwipeStart"
-     @onmouseup="HandleSwipeEnd">
-    <div class="field">
-        @for (var row = 0; row < _gameFieldSize; row++)
-        {
-            <div class="row">
-                @for (var col = 0; col < _gameFieldSize; col++)
-                {
-                    <Cell MatrixCell="@_gameMatrix.Cells[row][col]"/>
-                }
-            </div>
-        }
+<div class="swipe-zone"
+      @ontouchstart="HandleSwipeStart"
+      @ontouchend="HandleSwipeEnd"
+      @onmousedown="HandleSwipeStart"
+      @onmouseup="HandleSwipeEnd">
+    <div class="score-bar">
+        <div>current score <span>@_currentScore</span></div>
     </div>
-    <div class="lose @(_gameEnded ? " display" : "")"
-         @onclick="RestartGame">
-        <div>You lose</div>
-        <div>@_currentScore</div>
+    <div class="field-zone"
+         >
+        <div class="field">
+            @for (var row = 0; row < _gameFieldSize; row++)
+            {
+                <div class="row">
+                    @for (var col = 0; col < _gameFieldSize; col++)
+                    {
+                        <Cell MatrixCell="@_gameMatrix.Cells[row][col]"/>
+                    }
+                </div>
+            }
+        </div>
+        <div class="lose @(_gameEnded ? " display" : "")"
+             @onclick="RestartGame">
+            <div>You lose</div>
+            <div>@_currentScore</div>
+        </div>
     </div>
-</div>
-<div class="buttons-bar">
-    <button @onclick="RestartGame">
-        <img src="restart.png" alt="icon"/>
-        <span>restart</span>
-    </button>
-    <button @onclick="() => {_showSettings = true;}" 
-            class="@(_showSettings ? " display-none" : "")">
-        <img src="settings.png" alt="icon"/>
-        <span>settings</span>
-    </button>
-    <div class="settings-buttons @(_showSettings ? " display" : "")">
-        <button @onclick="() => ChangeGameSize(4)">4</button>
-        <button @onclick="() => ChangeGameSize(5)">5</button>
-        <button @onclick="() => ChangeGameSize(6)">6</button>
+    <div class="buttons-bar">
+        <button @onclick="RestartGame">
+            <img src="restart.png" alt="icon"/>
+            <span>restart</span>
+        </button>
+        <button @onclick="() => {_showSettings = true;}" 
+                class="@(_showSettings ? " display-none" : "")">
+            <img src="settings.png" alt="icon"/>
+            <span>settings</span>
+        </button>
+        <div class="settings-buttons @(_showSettings ? " display" : "")">
+            <button @onclick="() => ChangeGameSize(4)">4</button>
+            <button @onclick="() => ChangeGameSize(5)">5</button>
+            <button @onclick="() => ChangeGameSize(6)">6</button>
+        </div>
+        <br/>
     </div>
-    <br/>
+    <div class="max-score">max score @_maxScore</div>
 </div>
-<div class="max-score">max score @_maxScore</div>
+
 
 @code
 {

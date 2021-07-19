@@ -75,7 +75,7 @@ button:active{
     margin: 1rem 0;
 }
 
-.touch-zone{
+.field-zone{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -141,9 +141,5 @@ button:active{
 
     .max-score{
         font-size: 1rem;
-    }
-    
-    .touch-zone{
-        min-height: calc(100vh - 23rem);
     }
 }
