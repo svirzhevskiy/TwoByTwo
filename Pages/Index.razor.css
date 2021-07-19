@@ -137,6 +137,7 @@ button:active{
 
     button > img{
         height: 1.2rem;
+        max-width: 24px;
     }
 
     .max-score{
