@@ -13,7 +13,7 @@
 @media (max-width: 530px) {
     .cell[b-swx57o0k79]{
         margin: 0.1rem 0.22rem;
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 }
 
@@ -208,7 +208,7 @@ button:active[b-597604okvn]{
     margin: 1rem 0;
 }
 
-.touch-zone[b-597604okvn]{
+.field-zone[b-597604okvn]{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -274,10 +274,6 @@ button:active[b-597604okvn]{
 
     .max-score[b-597604okvn]{
         font-size: 1rem;
-    }
-    
-    .touch-zone[b-597604okvn]{
-        min-height: calc(100vh - 23rem);
     }
 }
 /* /Shared/MainLayout.razor.rz.scp.css */
