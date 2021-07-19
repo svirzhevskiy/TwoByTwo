@@ -31,14 +31,14 @@ jobs:
     - name: Publish .NET Core Project
       run: dotnet publish TwoByTwo.csproj -c Release --output release --nologo
       
-    - name: Uploading files to gh-pages branch
-      uses: JamesIves/github-pages-deploy-action@4.1.4
-      with:
-        branch: gh-pages
-        folder: release/wwwroot
-        
     - name: Change base-tag in index.html from / to TwoByTwo
       run: sed -i 's/<base href="\/" \/>/<base href="\/TwoByTwo\/" \/>/g' release/wwwroot/index.html
       
     - name: Add .nojekyll file
       run: touch release/wwwroot/.nojekyll
+      
+    - name: Uploading files to gh-pages branch
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages
+        folder: release/wwwroot
