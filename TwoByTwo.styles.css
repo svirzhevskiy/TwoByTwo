@@ -10,6 +10,13 @@
     border-radius: 10px;
 }
 
+@media (max-width: 530px) {
+    .cell[b-swx57o0k79]{
+        margin: 0.1rem 0.22rem;
+        font-size: 0.8rem;
+    }
+}
+
 .increment-anim[b-swx57o0k79] {
     animation: popCell-b-swx57o0k79 0.34s linear;
 }
@@ -238,6 +245,36 @@ button:active[b-597604okvn]{
 
 .display[b-597604okvn]{
     display: flex;
+}
+
+@media (max-width: 530px) {
+    .field[b-597604okvn]{
+        padding: 0.5rem;
+        border-radius: 18px;
+    }
+
+    .score-bar[b-597604okvn]{
+        font-size: 1rem;
+        padding: 0.4rem 1.3rem;
+    }
+
+    .buttons-bar > button[b-597604okvn]{
+        min-width: 8rem;
+    }
+
+    button[b-597604okvn]{
+        font-size: 1rem;
+        padding: 0.7rem 1.25rem;
+        height: auto;
+    }
+
+    button > img[b-597604okvn]{
+        height: 1.2rem;
+    }
+
+    .max-score[b-597604okvn]{
+        font-size: 1rem;
+    }
 }
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-hnmh5rtqas]{
