@@ -270,6 +270,7 @@ button:active[b-597604okvn]{
 
     button > img[b-597604okvn]{
         height: 1.2rem;
+        max-width: 24px;
     }
 
     .max-score[b-597604okvn]{
