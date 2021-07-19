@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy TwoByTwo
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  deploy-to-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      # клонируем репозиторий на виртуальную машину
+    - uses: actions/checkout@v2
+    
+      # ставим нужный SDK (можно использовать и более старые)
+    - name: Setup .NET 6
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+        include-prerelease: true
+        
+      # генерируем статические файлы
+    - name: Publish .NET Core Project
+      run: dotnet publish TwoByTwo/TwoByTwo.csproj -c Release --output release --nologo
+      
+    - name: Uploading files to gh-pages branch
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages
+        folder: release/wwwroot
+        
+    - name: Change base-tag in index.html from / to TwoByTwo
+      run: sed -i 's/<base href="\/" \/>/<base href="\/TwoByTwo\/" \/>/g' release/wwwroot/index.html
+      
+    - name: Add .nojekyll file
+      run: touch release/wwwroot/.nojekyll
