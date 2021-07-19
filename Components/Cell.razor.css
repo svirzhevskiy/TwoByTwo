@@ -3,7 +3,7 @@
     display: inline-block;
     height: var(--cell-size);
     width: var(--cell-size);
-    margin: 0.2rem 0.35rem;
+    margin: 0.17rem 0.3rem;
     color: black;
     background-color: var(--background-color);
     border-radius: 10px;
@@ -47,7 +47,7 @@
 
 .number{
     position: absolute;
-    font-size: 2em;
+    font-size: 1.6em;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
