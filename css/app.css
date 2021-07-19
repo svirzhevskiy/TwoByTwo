@@ -20,6 +20,7 @@
 html, body {
     font-family: Montserrat, sans-serif;
     margin: 0;
+    overscroll-behavior: none;
 }
 
 #blazor-error-ui {
