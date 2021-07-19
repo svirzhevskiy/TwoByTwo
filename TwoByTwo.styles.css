@@ -4,7 +4,7 @@
     display: inline-block;
     height: var(--cell-size);
     width: var(--cell-size);
-    margin: 0.2rem 0.35rem;
+    margin: 0.17rem 0.3rem;
     color: black;
     background-color: var(--background-color);
     border-radius: 10px;
@@ -48,7 +48,7 @@
 
 .number[b-swx57o0k79]{
     position: absolute;
-    font-size: 2em;
+    font-size: 1.6em;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -135,13 +135,13 @@
     height: 5rem;
     text-align: center;
     color: #006180;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
 }
 
 .score-bar > div > span[b-597604okvn]{
     box-shadow: inset -7px -4px 6px #F2F9FF, inset 3px 4px 13px #C6D6E6;
     border-radius: 5px;
-    padding: 0.7rem 2.3rem;
+    padding: 0.5rem 2rem;
     margin-left: 1rem;
     display: inline-block;
     min-width: 3rem;
@@ -155,12 +155,12 @@
 
 .buttons-bar > button[b-597604okvn]{
     margin: 1rem;
-    min-width: 11rem;
+    min-width: 10rem;
     user-select: none;
 }
 
 button > img[b-597604okvn]{
-    height: 1.7rem;
+    height: 1.4rem;
     max-width: 40px;
 }
 
@@ -173,13 +173,12 @@ button[b-597604okvn]{
     box-shadow: -7px -4px 6px #f3faff, 3px 4px 13px #c4d2e0;
     border-radius: 5px;
     border: none;
-    padding: 0.5rem 1.75rem;
+    padding: 0.6rem 1.15rem;
     color: #006180;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 3rem;
     justify-content: center;
 }
 
@@ -204,7 +203,7 @@ button:active[b-597604okvn]{
 
 .max-score[b-597604okvn]{
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #006180;
     margin: 1rem 0;
 }
@@ -218,13 +217,13 @@ button:active[b-597604okvn]{
 }
 
 .field[b-597604okvn]{
-    padding: 1.4rem;
+    padding: 1rem;
     min-width: max-content;
     height: fit-content;
     user-select: none;
     background: var(--background-color);
     box-shadow: -19px -11px 38px #FAFCFF, 12px 12px 85px #C5D6E7;
-    border-radius: 34px;
+    border-radius: 26px;
 }
 
 .lose[b-597604okvn]{
