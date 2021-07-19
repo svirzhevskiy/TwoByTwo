@@ -113,3 +113,33 @@ button:active{
 .display{
     display: flex;
 }
+
+@media (max-width: 530px) {
+    .field{
+        padding: 0.5rem;
+        border-radius: 18px;
+    }
+
+    .score-bar{
+        font-size: 1rem;
+        padding: 0.4rem 1.3rem;
+    }
+
+    .buttons-bar > button{
+        min-width: 8rem;
+    }
+
+    button{
+        font-size: 1rem;
+        padding: 0.7rem 1.25rem;
+        height: auto;
+    }
+
+    button > img{
+        height: 1.2rem;
+    }
+
+    .max-score{
+        font-size: 1rem;
+    }
+}

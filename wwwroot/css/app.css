@@ -3,6 +3,12 @@
     --background-color: #E8F1F8;
 }
 
+@media (max-width: 530px) {
+    :root{
+        --cell-size: 4rem;
+    }
+}
+
 @font-face {
     font-family: "Montserrat";
     src: url("../fonts/Montserrat/Montserrat-Bold.ttf");
